@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "simple-blog"
+version = "0.0.1"
+description = "simple blog"
+authors = ["Youngkwang Yang <immutable000@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "4.0.5"
+django-silk = "^4.3.0"
+mysqlclient = "^2.1.0"
+python-dotenv = "^0.20.0"
+
+[tool.poetry.dev-dependencies]
+black = "22.3.0"
+isort = "5.10.1"
+flake8 = "4.0.1"
+
+[tool.isort]
+include_trailing_comma = true
+line_length = 88
+profile = "black"
+skip_glob = "**/migrations/*.py"
+use_parentheses = false
+
+[tool.black]
+extend-exclude = '''
+     migrations
+'''
+include = '\.pyi?$'
+line-length = 88
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
