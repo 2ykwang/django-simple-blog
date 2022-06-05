@@ -1,19 +1,27 @@
 {% load links %}
+{% load categories %}
 
 <div class="p-4 mb-3 bg-white rounded">
-    <h4 class="fst-normal">Youngkwang Yang</h4>
+    <h4 class="fst-normal"><a href="{% url 'apps.main:main_index' %}">Youngkwang Yang</a></h4>
     <p class="mb-0">자기소개 </p>
 </div>
 
 <div class="p-4">
-    <h4 class="fst-normal">Links</h4>
-    <ol class="list-unstyled">
+    <h4 class="fst-normal">카테고리</h4>
+    <ul>
+        {% show_categories %}
+    </ul>
+</div>
+
+<div class="p-4">
+    <h4 class="fst-normal">링크</h4>
+    <ul>
         {% show_links %}
-    </ol>
+    </ul>
 </div>
 
 <div class="p-4">
     <h4 class="fst-normal">최근 글</h4>
-    <ol class="list-unstyled mb-0">
-    </ol>
+    <ul>
+    </ul>
 </div>

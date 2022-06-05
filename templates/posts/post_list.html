@@ -2,8 +2,16 @@
 
 {% block content %}
     {% for post in object_list %}
-        <li>{{ post.created|date }} - {{ post.title }}</li>
+        <div class="row card border-0 g-0 overflow-hidden flex-md-row mb-4 h-md">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
+                <h4 class="mb-0">{{ post.title|truncatechars:40 }}</h4>
+                <div class="mb-1 text-muted">{{ post.created|date }}</div>
+                <p class="mb-auto mt-1">{{ post.description|truncatechars:140 }}</p>
+                <a href="{{ post.get_absolute_url }}" class="stretched-link mt-2">계속 읽기</a>
+            </div>
+        </div>
     {% empty %}
-        <li>No articles yet.</li>
+        <h2>글이 없어요</h2>
     {% endfor %}
 {% endblock %}
