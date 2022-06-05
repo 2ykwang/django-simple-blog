@@ -14,13 +14,14 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-THIRDPARTY_APPS = []
+THIRDPARTY_APPS = [
+    "markdownx",
+]
 LOCAL_APPS = [
     "apps.core",
     "apps.main",
     "apps.posts",
 ]
-
 INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [

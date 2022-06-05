@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load post_markdown %}
 
 {% block content %}
     <h2>{{object.title}}</h2>
-    {{object.content}}
+    {{object.content | markdown }}
 {% endblock %}
