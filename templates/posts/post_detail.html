@@ -1,6 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'layout/base.html' %}
+{% load post_markdown %}
 
 {% block content %}
-    <h2>{{object.title}}</h2>
-    {{object.content}}
+
+    <article class="blog-post">
+        <h1 class="blog-post-title">{{object.title}}</h1>
+        <p class="blog-post-meta">January 1, 2022 by <a href="#">Youngkwang Yang</a></p>
+        <div class="blog-post-content">
+            {{object.content | markdown }}
+        </div>
+    </article>
 {% endblock %}

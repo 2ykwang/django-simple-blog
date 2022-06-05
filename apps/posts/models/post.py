@@ -1,6 +1,9 @@
 from django.db import models
+from django.urls import reverse
 
+from apps.core.fields import UUIDImageField
 from apps.core.models import TimeStampedModel
+from apps.posts.apps import PostsConfig as Config
 
 
 class Post(TimeStampedModel):
@@ -13,6 +16,9 @@ class Post(TimeStampedModel):
         verbose_name = "게시글"
         verbose_name_plural = "게시글"
 
+    thumbnail = UUIDImageField(
+        verbose_name="썸네일", upload_to="uploads/", null=True, blank=True
+    )
     title = models.CharField(verbose_name="제목", max_length=120)
     content = models.TextField(verbose_name="내용")
 
@@ -23,6 +29,9 @@ class Post(TimeStampedModel):
     status = models.SmallIntegerField(
         verbose_name="상태", choices=Status.choices, default=Status.DRAFT
     )
+
+    def get_absolute_url(self):
+        return reverse(f"{Config.name}:post_detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title

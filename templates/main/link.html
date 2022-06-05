@@ -1,0 +1,4 @@
+{% for link in links %}
+    <li><a href="{{ link.get_target_url }}"
+           {% if link.is_open_new_window %}target="_blank"{% endif %}>{{ link.name|truncatechars:25 }}</a></li>
+{% endfor %}
