@@ -1,15 +1,19 @@
+{% load static %}
+{% load menus %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static '/css/blog.css' %}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block header %}
     {% endblock %}
     <title>Document</title>
 </head>
 <body>
-  	<div class="navbar">
-  	</div>
+    {% show_menus %}
     {% block content %}
     {% endblock %}
 </body>

@@ -5,8 +5,8 @@ from .models import Menu
 
 class MenuAdmin(admin.ModelAdmin):
 
-    list_display = ["name", "description", "get_target_url"]
-    fields = ["name", "description", "link", "post", "get_target_url"]
+    list_display = ["name", "description", "get_target_url", "order"]
+    fields = ["name", "description", "link", "post", "get_target_url", "order"]
     readonly_fields = ["get_target_url"]
 
     def get_target_url(self, menu: Menu) -> str:

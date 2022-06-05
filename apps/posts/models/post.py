@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from apps.core.models import TimeStampedModel
+from apps.posts.apps import PostsConfig as Config
 
 
 class Post(TimeStampedModel):
@@ -26,7 +27,7 @@ class Post(TimeStampedModel):
     )
 
     def get_absolute_url(self):
-        return reverse("posts:post_detail", kwargs={"slug": self.slug})
+        return reverse(f"{Config.name}:post_detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title
