@@ -7,7 +7,7 @@ from .models import Post
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ["title", "created"]
-    fields = ["title", "content", "slug", "updated", "created"]
+    fields = ["title", "content", "thumbnail", "slug", "updated", "created"]
     readonly_fields = ["updated", "created"]
     formfield_overrides = {models.TextField: {"widget": AdminMarkdownxWidget}}
 

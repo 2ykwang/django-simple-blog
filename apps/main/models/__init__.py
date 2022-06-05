@@ -1,1 +1,1 @@
-from .menu import Menu
+from .link import Link
