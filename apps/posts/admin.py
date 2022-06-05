@@ -9,4 +9,5 @@ class PostAdmin(admin.ModelAdmin):
     fields = ["title", "content", "slug", "updated", "created"]
     readonly_fields = ["updated", "created"]
 
+
 admin.site.register(Post, PostAdmin)

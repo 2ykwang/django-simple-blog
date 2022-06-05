@@ -15,6 +15,7 @@ DJANGO_APPS = [
 THIRDPARTY_APPS = []
 LOCAL_APPS = [
     "apps.core",
+    "apps.main",
     "apps.posts",
 ]
 

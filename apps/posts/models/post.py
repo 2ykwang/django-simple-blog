@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from apps.core.models import TimeStampedModel
 
@@ -23,6 +24,9 @@ class Post(TimeStampedModel):
     status = models.SmallIntegerField(
         verbose_name="상태", choices=Status.choices, default=Status.DRAFT
     )
+
+    def get_absolute_url(self):
+        return reverse("posts:post_detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title
