@@ -1,0 +1,26 @@
+
+img{
+    width: 100%;
+}
+.content{
+    width: 800px;
+}
+.blog-post-title {
+    line-height: 3.375rem;
+    margin-top: 3.375rem;
+    margin-bottom: 2.25rem;
+    max-width: 46.5625rem;
+    font-weight: 600;
+    text-align: center;
+
+}
+.blog-post{
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+}
+
+.blog-post-content h2, .blog-post-content h3{
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+pre {border: 0; padding: 10px; background-color: transparent;}
