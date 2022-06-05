@@ -4,7 +4,9 @@ from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    pass
 
+    list_display = ["title", "created"]
+    fields = ["title", "content", "slug", "updated", "created"]
+    readonly_fields = ["updated", "created"]
 
 admin.site.register(Post, PostAdmin)
