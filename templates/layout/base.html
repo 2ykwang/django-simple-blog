@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="{% static '/css/blog.css' %}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:type" content="website">
     {% block header %}
     {% endblock %}
-    <title>Document</title>
+    <title>{% block title %}{% endblock %} - Youngkwang Yang</title>
 </head>
 <body>
 <main class="container">
