@@ -13,6 +13,8 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
 ]
 THIRDPARTY_APPS = [
     "markdownx",
@@ -111,3 +113,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "files/")
 MEDIA_URL = "/files/"
+
+SITE_ID = 1
