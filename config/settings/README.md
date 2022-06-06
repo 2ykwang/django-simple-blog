@@ -10,6 +10,7 @@
 - DB_PASSWORD = db user password
 - DB_HOST = db host
 - DB_PORT = db port
+- ANALYTICS_GTAG_ID (optional) e.g) G-7W...BS0
 
 ### local
 - ENABLE_SILK=1 (django-silk 활성화 여부)
