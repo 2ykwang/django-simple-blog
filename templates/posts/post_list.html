@@ -10,7 +10,7 @@
 {% endblock %}
 {% block content %}
     {% if list_title %}
-        <h2>{{ list_title }}</h2>
+        <h1 class="blog-header">{{ list_title }}</h1>
     {% endif %}
     {% for post in object_list %}
         <div class="row card border-0 g-0 overflow-hidden flex-md-row mb-4 h-md">
