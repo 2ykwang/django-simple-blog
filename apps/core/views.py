@@ -1,4 +1,6 @@
 from django.http import JsonResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from markdownx.views import ImageUploadView
 
 
@@ -12,3 +14,7 @@ class CustomImageUploadView(ImageUploadView):
             return JsonResponse({"image_code": image_code})
 
         return response
+
+
+def handler404(request, exception=None):
+    return redirect(reverse("apps.posts:post_list"))
