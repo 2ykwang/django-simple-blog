@@ -50,7 +50,7 @@ class Post(TimeStampedModel):
     title = models.CharField(verbose_name="제목", max_length=120)
     content = models.TextField(verbose_name="내용")
 
-    slug = models.SlugField(verbose_name="슬러그", unique=True)
+    slug = models.SlugField(verbose_name="슬러그", allow_unicode=True, unique=True)
     description = models.CharField(
         verbose_name="설명", max_length=140, null=True, blank=True
     )

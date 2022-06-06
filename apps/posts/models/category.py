@@ -28,7 +28,9 @@ class Category(models.Model):
         ordering = ["order"]
 
     name = models.CharField(verbose_name="이름", max_length=40, unique=True)
-    slug = models.SlugField(verbose_name="슬러그", max_length=40, unique=True)
+    slug = models.SlugField(
+        verbose_name="슬러그", max_length=40, allow_unicode=True, unique=True
+    )
     order = models.SmallIntegerField(verbose_name="카테고리 순서", default=0)
     objects = CategoryManager()
 
