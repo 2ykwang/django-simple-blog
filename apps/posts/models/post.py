@@ -41,7 +41,7 @@ class Post(TimeStampedModel):
         ordering = ["-created"]
 
     objects = models.Manager()
-    published = PublishedManager()
+    published_posts = PublishedManager()
     pages = PageManager()
 
     thumbnail = UUIDImageField(
