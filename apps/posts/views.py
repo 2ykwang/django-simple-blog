@@ -10,7 +10,7 @@ class PostDetailView(DetailView):
 
 class PostListView(ListView):
     def get_queryset(self):
-        queryset = Post.objects.select_related("category")
+        queryset = Post.published.select_related("category")
         return queryset
 
     def get_context_data(self, **kwargs):

@@ -15,7 +15,7 @@ class PublishedManager(models.Manager):
         return (
             super(PublishedManager, self)
             .get_queryset()
-            .filter(status__in=Post.public_status())
+            .filter(status__in=Post.public_on_category_status())
         )
 
 
