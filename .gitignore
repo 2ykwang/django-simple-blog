@@ -7,11 +7,11 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+staticfiles/
 .Python
 files/
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
