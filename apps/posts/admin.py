@@ -16,6 +16,7 @@ class PostAdmin(admin.ModelAdmin):
         "description",
         "category",
         "status",
+        "is_page",
         "updated",
         "created",
     )

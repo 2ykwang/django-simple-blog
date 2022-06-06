@@ -15,7 +15,16 @@ class PublishedManager(models.Manager):
         return (
             super(PublishedManager, self)
             .get_queryset()
-            .filter(status__in=Post.public_status())
+            .filter(is_page=False, status__in=Post.public_on_category_status())
+        )
+
+
+class PageManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super(PageManager, self)
+            .get_queryset()
+            .filter(is_page=True, status__in=Post.public_status())
         )
 
 
@@ -33,6 +42,7 @@ class Post(TimeStampedModel):
 
     objects = models.Manager()
     published = PublishedManager()
+    pages = PageManager()
 
     thumbnail = UUIDImageField(
         verbose_name="썸네일", upload_to="uploads/", null=True, blank=True
@@ -47,7 +57,7 @@ class Post(TimeStampedModel):
     status = models.SmallIntegerField(
         verbose_name="상태", choices=Status.choices, default=Status.DRAFT
     )
-
+    is_page = models.BooleanField(verbose_name="페이지", default=False)
     category = models.ForeignKey(
         to="posts.category",
         related_name="posts",

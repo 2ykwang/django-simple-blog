@@ -12,10 +12,12 @@
 {% block content %}
     <article class="blog-post">
         <h1 class="blog-post-title">{{ object.title }}</h1>
-        <p class="blog-post-meta row">
-            <small> {{ object.created | date }}</small>
-            <small class="text-muted"> {{ post.estimate_reading_time }} 분 소요</small>
-        </p>
+        {% if not object.is_page %}
+            <p class="blog-post-meta row">
+                <small> {{ object.created | date }}</small>
+                <small class="text-muted"> {{ post.estimate_reading_time }} 분 소요</small>
+            </p>
+        {% endif %}
         <div class="blog-post-content">
             {{ object.content | markdown }}
         </div>
