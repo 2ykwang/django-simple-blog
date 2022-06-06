@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView, TemplateView, View
 
@@ -6,6 +7,12 @@ from .models import Category, Post
 
 class PostDetailView(DetailView):
     model = Post
+
+    def get_object(self, queryset=None):
+        post = super(PostDetailView, self).get_object(queryset=queryset)
+        if post.status not in Post.public_status():
+            raise Http404()
+        return post
 
 
 class PostListView(ListView):
