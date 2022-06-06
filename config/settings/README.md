@@ -13,7 +13,8 @@
 
 ### local
 - ENABLE_SILK=1 (django-silk 활성화 여부)
+- ALLOWED_HOSTS (default: "localhost", "127.0.0.1", "0.0.0.0")
 
 ### production
 
-- ALLOWED_HOST = "localhost, 127.0.0.1, 0.0.0.0"
+- ALLOWED_HOSTS = "localhost, 127.0.0.1, 0.0.0.0"
