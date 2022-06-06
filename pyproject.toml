@@ -20,6 +20,9 @@ django-cacheops = "6.1"
 black = "22.3.0"
 isort = "5.10.1"
 flake8 = "4.0.1"
+coverage = "6.4.1"
+factory-boy = "3.2.1"
+tox = "3.25.0"
 
 [tool.isort]
 include_trailing_comma = true
