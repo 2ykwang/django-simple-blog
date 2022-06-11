@@ -1,0 +1,12 @@
+{% if use_utterances_comment %}
+<div class="blog-post-comment">
+    <script src="https://utteranc.es/client.js"
+            repo="{{ utterances_repo }}"
+            issue-term="{{ utterances_issue_term }}"
+            label="{{ utterances_label }}"
+            theme="{{ utterances_theme }}"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+{% endif %}

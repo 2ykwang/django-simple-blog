@@ -1,4 +1,5 @@
 {% extends 'layout/base.html' %}
+{% load utterances %}
 {% load post_markdown %}
 
 {% block title %}{{ object.title }}{% endblock %}
@@ -10,16 +11,19 @@
     {% endif %}
 {% endblock %}
 {% block content %}
-    <article class="blog-post">
-        <h1 class="blog-post-title">{{ object.title }}</h1>
-        {% if not object.is_page %}
-            <p class="blog-post-meta row">
-                <small> {{ object.published | date }}</small>
-                <small class="text-muted"> {{ post.estimate_reading_time }} 분 소요</small>
-            </p>
-        {% endif %}
-        <div class="blog-post-content">
-            {{ object.content | markdown }}
-        </div>
-    </article>
+    <div class="blog-post">
+        <article>
+            <h1 class="blog-post-title">{{ object.title }}</h1>
+            {% if not object.is_page %}
+                <p class="blog-post-meta row">
+                    <small> {{ object.published | date }}</small>
+                    <small class="text-muted"> {{ post.estimate_reading_time }} 분 소요</small>
+                </p>
+            {% endif %}
+            <div class="blog-post-content">
+                {{ object.content | markdown }}
+            </div>
+        </article>
+        {% utterances_comment %}
+    </div>
 {% endblock %}

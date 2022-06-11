@@ -39,4 +39,8 @@ img{
     margin-top: 2.7rem;
     margin-bottom: 0.75rem;
 }
+.utterances{
+    max-width: 100% !important;
+}
+
 pre {border: 0; padding: 10px; background-color: transparent;}
