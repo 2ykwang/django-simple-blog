@@ -2,6 +2,7 @@ from typing import Tuple
 
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.html import strip_tags
 from markdownx.utils import markdownify
 
@@ -38,7 +39,7 @@ class Post(TimeStampedModel):
     class Meta:
         verbose_name = "게시글"
         verbose_name_plural = "게시글"
-        ordering = ["-created"]
+        ordering = ["-published"]
 
     objects = models.Manager()
     published_posts = PublishedManager()
@@ -65,6 +66,7 @@ class Post(TimeStampedModel):
         null=True,
         blank=True,
     )
+    published = models.DateTimeField(verbose_name="게시 일", default=timezone.now)
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None

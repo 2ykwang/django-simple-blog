@@ -13,7 +13,7 @@
 - ANALYTICS_GTAG_ID (optional) e.g) G-7W...BS0
 
 ### local
-- ENABLE_SILK=1 (django-silk 활성화 여부)
+- ENABLE_DEBUG_TOOLBAR = 디버그 툴바 활성화 여부
 - ALLOWED_HOSTS (default: "localhost", "127.0.0.1", "0.0.0.0")
 
 ### production

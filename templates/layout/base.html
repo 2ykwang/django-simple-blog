@@ -29,7 +29,7 @@
     </div>
 </main>
 <script src="{% static '/dist/bootstrap/js/bootstrap.bundle.min-5.1.3.js' %}"></script>
-{% if analytics_gtag_id %}
+{% if analytics_gtag_id and not request.user.is_superuser %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_gtag_id }}"></script>
 <script>
     window.dataLayer = window.dataLayer || [];

@@ -6,6 +6,7 @@ from .utils import get_value
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = get_value("SECRET_KEY")
 
+
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -18,6 +19,7 @@ DJANGO_APPS = [
 ]
 THIRDPARTY_APPS = [
     "markdownx",
+    "silk",
 ]
 LOCAL_APPS = [
     "apps.core",
@@ -34,6 +36,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "silk.middleware.SilkyMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+from django import forms
 from markdownx.widgets import AdminMarkdownxWidget
 
 from .models import Category, Post
@@ -7,7 +8,8 @@ from .models import Category, Post
 
 class PostAdmin(admin.ModelAdmin):
     list_select_related = ("category",)
-    list_display = ("title", "created", "category")
+    list_display = ("title", "published", "category")
+
     fields = (
         "title",
         "content",
@@ -17,6 +19,7 @@ class PostAdmin(admin.ModelAdmin):
         "category",
         "status",
         "is_page",
+        "published",
         "updated",
         "created",
     )

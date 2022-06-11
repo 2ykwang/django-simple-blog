@@ -10,7 +10,11 @@ class PostDetailView(DetailView):
 
     def get_object(self, queryset=None):
         post = super(PostDetailView, self).get_object(queryset=queryset)
-        if post.status not in Post.public_status():
+
+        if (
+            not self.request.user.is_superuser
+            and post.status not in Post.public_status()
+        ):
             raise Http404()
         return post
 
