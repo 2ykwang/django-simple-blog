@@ -7,5 +7,5 @@ register = template.Library()
 
 @register.inclusion_tag("posts/categories.html")
 def show_categories():
-    categories = Category.objects.with_post_counts().only("name", "slug").all()
+    categories = Category.objects.with_post_counts().only("name", "slug").all().cache()
     return {"categories": categories}

@@ -21,7 +21,7 @@ class PostDetailView(DetailView):
 
 class PostListView(ListView):
     def get_queryset(self):
-        queryset = Post.published_posts.select_related("category")
+        queryset = Post.published_posts.select_related("category").cache()
         return queryset
 
     def get_context_data(self, **kwargs):
