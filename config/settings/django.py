@@ -20,6 +20,7 @@ DJANGO_APPS = [
 THIRDPARTY_APPS = [
     "markdownx",
     "silk",
+    "cacheops",
 ]
 LOCAL_APPS = [
     "apps.core",

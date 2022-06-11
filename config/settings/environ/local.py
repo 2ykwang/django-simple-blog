@@ -13,3 +13,5 @@ except KeyError:
 if ENABLE_DEBUG_TOOLBAR:
     INSTALLED_APPS += ["debug_toolbar"]
     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+
+SILKY_INTERCEPT_PERCENT = 100  # 트래픽의 100% 로깅
