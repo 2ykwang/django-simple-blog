@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="{% static '/dist/bootstrap/css/bootstrap.min-5.1.3.css' %}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{% static '/css/blog.css' %}" >
 
+    <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta property="og:type" content="website">
     {% block header %}
+    <meta property="og:title" content="Youngkwang Yang">
+    <meta property="og:description" content="Youngkwang Yang blog">
     {% endblock %}
     <title>{% block title %}{% endblock %} - Youngkwang Yang</title>
 </head>

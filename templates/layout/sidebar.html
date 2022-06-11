@@ -1,3 +1,4 @@
+{% load posts %}
 {% load links %}
 {% load categories %}
 
@@ -23,5 +24,6 @@
 <div class="p-4">
     <h4 class="fst-normal">최근 글</h4>
     <ul>
+        {% show_recent_posts %}
     </ul>
 </div>

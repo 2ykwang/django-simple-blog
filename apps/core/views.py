@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from markdownx.views import ImageUploadView
 from django.views.generic import View
+from markdownx.views import ImageUploadView
 
 
 class CustomImageUploadView(ImageUploadView):

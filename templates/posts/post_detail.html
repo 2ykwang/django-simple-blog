@@ -6,6 +6,8 @@
 {% block header %}
     <meta property="og:title" content="{{ object.title }} - Youngkwang Yang">
     <meta property="og:description" content="{{ object.description }}">
+    <meta property=”article:published_time” content=“{{ object.published | date:'c' }}”>
+    <meta property=”article:section” content=“{{ object.category }}”>
     {% if object.thumbnail %}
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.thumbnail.url }}">
     {% endif %}
