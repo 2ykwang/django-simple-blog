@@ -26,6 +26,8 @@
                 {{ post.content | markdown }}
             </div>
         </article>
-        {% utterances_comment %}
+        {% if post.use_comment %}
+            {% utterances_comment %}
+        {% endif %}
     </div>
 {% endblock %}

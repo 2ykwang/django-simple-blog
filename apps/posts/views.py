@@ -7,6 +7,7 @@ from .models import Category, Post
 
 class BasePostDetailView(DetailView):
     context_object_name = "post"
+
     def get_object(self, queryset=None):
         page = super(BasePostDetailView, self).get_object(queryset=queryset)
 
@@ -30,7 +31,7 @@ class PostDetailView(BasePostDetailView):
 
 class PostListView(ListView):
     def get_queryset(self):
-        queryset = Post.posts.select_related("category").cache()
+        queryset = Post.posts.public_on_category().select_related("category").cache()
         return queryset
 
     def get_context_data(self, **kwargs):

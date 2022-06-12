@@ -35,9 +35,7 @@ class Category(models.Model):
     objects = CategoryManager()
 
     def get_posts(self):
-        from apps.posts.models import Post
-
-        return self.posts.filter(status__in=Post.public_on_category_status()).all()
+        return self.posts.public_on_category()
 
     def get_absolute_url(self):
         return reverse(f"{Config.name}:category_view", kwargs={"slug": self.slug})

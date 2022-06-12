@@ -58,15 +58,22 @@ class Post(TimeStampedModel):
     status = models.SmallIntegerField(
         verbose_name="상태", choices=Status.choices, default=Status.DRAFT
     )
-    is_page = models.BooleanField(verbose_name="페이지", default=False)
+    is_page = models.BooleanField(
+        verbose_name="페이지",
+        default=False,
+        help_text="페이지 여부를 체크합니다. 페이지는 카테고리에 노출되지 않습니다.",
+    )
     category = models.ForeignKey(
         to="posts.category",
         related_name="posts",
+        verbose_name="카테고리",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
     )
     published = models.DateTimeField(verbose_name="게시 일", default=timezone.now)
+
+    use_comment = models.BooleanField(verbose_name="댓글 허용", default=True)
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
