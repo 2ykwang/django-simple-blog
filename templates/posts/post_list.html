@@ -4,15 +4,12 @@
 {% block header %}
     <meta property="og:title" content="{{ category.name }} 글 목록 - Youngkwang Yang">
     <meta property="og:description" content="{{ category.name }} 글 목록">
-    {% if object.thumbnail %}
-{#    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.thumbnail.url }}">#}
-    {% endif %}
 {% endblock %}
 {% block content %}
     {% if list_title %}
         <h1 class="blog-header">{{ list_title }}</h1>
     {% endif %}
-    {% for post in object_list %}
+    {% for post in post_list %}
         <div class="row card border-0 g-0 overflow-hidden flex-md-row mb-4 h-md">
             <div class="col p-4 d-flex flex-column position-static">
                 {% if post.category %}

@@ -6,6 +6,7 @@ from .models import Category, Post
 
 
 class BasePostDetailView(DetailView):
+    context_object_name = "post"
     def get_object(self, queryset=None):
         page = super(BasePostDetailView, self).get_object(queryset=queryset)
 
@@ -40,6 +41,7 @@ class PostListView(ListView):
 
 class CategoryPostListView(ListView):
     template_name = "posts/post_list.html"
+    context_object_name = "post_list"
 
     def _get_category(self):
         # TODO: select category 두 번 발생
