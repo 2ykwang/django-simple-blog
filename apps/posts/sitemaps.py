@@ -10,7 +10,7 @@ class PostSitemap(Sitemap):
     priority = 0.7
 
     def items(self):
-        return Post.published_posts.filter(status__in=Post.public_on_category_status())
+        return Post.posts.public_on_category().all()
 
     def lastmod(self, post: Post):
         return post.updated
@@ -22,7 +22,7 @@ class PageSitemap(Sitemap):
     priority = 0.7
 
     def items(self):
-        return Post.pages.all()
+        return Post.pages.public_on_category().all()
 
     def lastmod(self, post: Post):
         return post.updated

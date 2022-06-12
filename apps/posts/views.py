@@ -5,23 +5,31 @@ from django.views.generic import DetailView, ListView, TemplateView, View
 from .models import Category, Post
 
 
-class PostDetailView(DetailView):
-    model = Post
-
+class BasePostDetailView(DetailView):
     def get_object(self, queryset=None):
-        post = super(PostDetailView, self).get_object(queryset=queryset)
+        page = super(BasePostDetailView, self).get_object(queryset=queryset)
 
         if (
             not self.request.user.is_superuser
-            and post.status not in Post.public_status()
+            and page.status not in page.public_status()
         ):
             raise Http404()
-        return post
+        return page
+
+
+class PageDetailView(BasePostDetailView):
+    model = Post
+    queryset = Post.pages.all()
+
+
+class PostDetailView(BasePostDetailView):
+    model = Post
+    queryset = Post.posts.all()
 
 
 class PostListView(ListView):
     def get_queryset(self):
-        queryset = Post.published_posts.select_related("category").cache()
+        queryset = Post.posts.select_related("category").cache()
         return queryset
 
     def get_context_data(self, **kwargs):

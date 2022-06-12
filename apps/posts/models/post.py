@@ -11,22 +11,22 @@ from apps.core.models import TimeStampedModel
 from apps.posts.apps import PostsConfig as Config
 
 
+class CustomPostQuerySet(models.QuerySet):
+    def public_on_category(self):
+        return self.filter(status__in=Post.public_on_category_status())
+
+    def public(self):
+        return self.filter(status__in=Post.public_status())
+
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return (
-            super(PublishedManager, self)
-            .get_queryset()
-            .filter(is_page=False, status__in=Post.public_on_category_status())
-        )
+        return super(PublishedManager, self).get_queryset().filter(is_page=False)
 
 
 class PageManager(models.Manager):
     def get_queryset(self):
-        return (
-            super(PageManager, self)
-            .get_queryset()
-            .filter(is_page=True, status__in=Post.public_status())
-        )
+        return super(PageManager, self).get_queryset().filter(is_page=True)
 
 
 class Post(TimeStampedModel):
@@ -41,9 +41,9 @@ class Post(TimeStampedModel):
         verbose_name_plural = "게시글"
         ordering = ["-published"]
 
-    objects = models.Manager()
-    published_posts = PublishedManager()
-    pages = PageManager()
+    objects = models.Manager.from_queryset(CustomPostQuerySet)()
+    posts = PublishedManager.from_queryset(CustomPostQuerySet)()
+    pages = PageManager.from_queryset(CustomPostQuerySet)()
 
     thumbnail = UUIDImageField(
         verbose_name="썸네일", upload_to="uploads/", null=True, blank=True
@@ -85,6 +85,8 @@ class Post(TimeStampedModel):
         return word_count // wpm
 
     def get_absolute_url(self):
+        if self.is_page:
+            return reverse(f"{Config.name}:page_detail", kwargs={"slug": self.slug})
         return reverse(f"{Config.name}:post_detail", kwargs={"slug": self.slug})
 
     def __str__(self):
