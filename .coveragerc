@@ -1,0 +1,5 @@
+[run]
+omit =
+    # omit migrations directory
+    */migrations/*
+    config/*
