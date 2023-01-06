@@ -11,6 +11,8 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
     "markdown.extensions.codehilite": {
         "use_pygments": True,
         "noclasses": True,
+        "css_class": "highlight",
+        "pygments_style": "material",
     }
 }
 MARKDOWNX_IMAGE_MAX_SIZE = {

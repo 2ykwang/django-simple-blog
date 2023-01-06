@@ -42,3 +42,7 @@ img{
 }
 
 pre {border: 0; padding: 10px; background-color: transparent;}
+
+.highlight{
+    color: #eee;
+}
