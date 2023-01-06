@@ -1,0 +1,55 @@
+version: "3.2"
+
+services:
+  app:
+    container_name: blog-app
+    build:
+      context: .
+    command: sh -c "python manage.py migrate --noinput &&
+      python manage.py collectstatic --noinput &&
+      python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/server
+      - ./staticfiles:/server/.staticfiles
+      - ./files:/server/.files
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+      - redis
+    restart: always
+
+    environment:
+      SECRET_KEY: "secret_key"
+      DB_NAME: "blog"
+      DB_USER: "root"
+      DB_PASSWORD: "1234"
+      DB_HOST: "database"
+      DB_PORT: 3306
+      ANALYTICS_GTAG_ID: "0" 
+      USE_UTTERANCES_COMMENT: 0
+      UTTERANCES_REPO: "0"
+      UTTERANCES_ISSUE_TERM: "0"
+      UTTERANCES_LABEL: "0"
+      UTTERANCES_THEME: "0"
+
+  database:
+    image: mysql:8.0
+    container_name: blog-mysql
+    ports:
+      - "13306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./.mysql/:/var/lib/mysql/
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: "blog"
+      MYSQL_ROOT_PASSWORD: "1234"
+
+  redis:
+    image: redis:7.0.7-bullseye
+    container_name: blog-redis
+    ports:
+      - "6379:6379"
