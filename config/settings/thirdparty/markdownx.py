@@ -12,7 +12,7 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
         "use_pygments": True,
         "noclasses": True,
         "css_class": "highlight",
-        "pygments_style": "material",
+        "pygments_style": "native",
     }
 }
 MARKDOWNX_IMAGE_MAX_SIZE = {
