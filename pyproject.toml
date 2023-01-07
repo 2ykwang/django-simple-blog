@@ -26,17 +26,17 @@ tox = "3.25.0"
 
 [tool.isort]
 include_trailing_comma = true
-line_length = 88
+line_length = 80
 profile = "black"
 skip_glob = "**/migrations/*.py"
 use_parentheses = false
 
 [tool.black]
+line-length = 80
 extend-exclude = '''
      migrations
 '''
 include = '\.pyi?$'
-line-length = 88
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
