@@ -21,7 +21,7 @@ img{
 }
 a, a:link, a:visited, a:active {
     color: var(--link-color);
-    /*text-decoration-line: none;*/
+    text-decoration-line: none;
 }
 a:hover{
      color: var(--accent-color);
