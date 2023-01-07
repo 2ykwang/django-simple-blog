@@ -1,6 +1,7 @@
 :root {
     --accent-color: #65bd50;
     --accent-color-light: #9be88d;
+    --link-color: #8cd186;
     --bg-color: #17171b;
     --header-color: #5DAF71;
     --default-color: #d1d1d1;
@@ -19,11 +20,11 @@ img{
     width: 100%;
 }
 a, a:link, a:visited, a:active {
-    color: var(--accent-color);
-    text-decoration-line: none;
+    color: var(--link-color);
+    /*text-decoration-line: none;*/
 }
 a:hover{
-     color: var(--accent-color-light);
+     color: var(--accent-color);
  }
 .content{
     width: 800px;
@@ -42,6 +43,11 @@ a:hover{
     font-weight: 600;
     text-align: center;
 }
+.blog-name a{
+    color:var(--default-color);
+    text-decoration-line: none;
+}
+
 .blog-post{
     font-size: 1.125rem;
     line-height: 1.6875rem;
