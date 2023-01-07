@@ -32,6 +32,8 @@ services:
       UTTERANCES_ISSUE_TERM: "0"
       UTTERANCES_LABEL: "0"
       UTTERANCES_THEME: "0"
+      REDIS_HOST: "redis"
+      REDIS_PORT: 6379
 
   database:
     image: mysql:8.0

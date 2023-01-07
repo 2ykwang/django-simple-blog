@@ -1,8 +1,9 @@
 # https://github.com/Suor/django-cacheops
+from config.settings.utils import get_value
 
 CACHEOPS_REDIS = {
-    "host": "localhost",  # redis-server is on same machine
-    "port": 6379,  # default redis port
+    "host": get_value("REDIS_HOST"),  # redis-server is on same machine
+    "port": int(get_value("REDIS_PORT", default="6379")),  # default redis port
     "db": 1,  # SELECT non-default redis database
 }
 CACHEOPS_DEFAULTS = {"timeout": 60 * 3}
