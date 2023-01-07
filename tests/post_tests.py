@@ -1,6 +1,7 @@
 from django.test import TransactionTestCase
-from apps.posts.models.factory import PostFactory
+
 from apps.posts.models import Post
+from apps.posts.models.factory import PostFactory
 
 
 class PostModelTestCase(TransactionTestCase):
@@ -32,7 +33,9 @@ class PostModelTestCase(TransactionTestCase):
 
         posts = list(Post.objects.public_on_category())
 
-        self.assertTrue(all([post.status == Post.Status.PUBLISHED for post in posts]))
+        self.assertTrue(
+            all([post.status == Post.Status.PUBLISHED for post in posts])
+        )
 
     def test_get_absolute_url(self):
         post = PostFactory()

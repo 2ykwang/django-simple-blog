@@ -1,7 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import View
-from django.http import HttpResponse
 
 
 class MainView(View):
@@ -10,4 +10,6 @@ class MainView(View):
 
 
 def AdsView(request, *args, **kwargs):
-    return HttpResponse("google.com, pub-3049139078910304, DIRECT, f08c47fec0942fa0")
+    return HttpResponse(
+        "google.com, pub-3049139078910304, DIRECT, f08c47fec0942fa0"
+    )

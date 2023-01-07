@@ -21,7 +21,9 @@ class CustomPostQuerySet(models.QuerySet):
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager, self).get_queryset().filter(is_page=False)
+        return (
+            super(PublishedManager, self).get_queryset().filter(is_page=False)
+        )
 
 
 class PageManager(models.Manager):
@@ -76,7 +78,11 @@ class Post(TimeStampedModel):
     use_comment = models.BooleanField(verbose_name="댓글 허용", default=True)
 
     def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
     ):
         if not self.description:
             # description을 빈 값으로 저장할 경우 내용에서 가져온다.
@@ -93,7 +99,9 @@ class Post(TimeStampedModel):
 
     def get_absolute_url(self):
         if self.is_page:
-            return reverse(f"{Config.name}:page_detail", kwargs={"slug": self.slug})
+            return reverse(
+                f"{Config.name}:page_detail", kwargs={"slug": self.slug}
+            )
         return reverse(f"{Config.name}:post_detail", kwargs={"slug": self.slug})
 
     def __str__(self):

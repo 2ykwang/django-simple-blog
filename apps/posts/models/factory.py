@@ -1,7 +1,7 @@
+import factory.fuzzy
 from factory.django import DjangoModelFactory
 
-from apps.posts.models import Post, Category
-import factory.fuzzy
+from apps.posts.models import Category, Post
 
 
 class CategoryFactory(DjangoModelFactory):

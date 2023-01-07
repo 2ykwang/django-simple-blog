@@ -1,7 +1,12 @@
 from django.urls import path
 
 from .apps import PostsConfig as Config
-from .views import CategoryPostListView, PageDetailView, PostDetailView, PostListView
+from .views import (
+    CategoryPostListView,
+    PageDetailView,
+    PostDetailView,
+    PostListView,
+)
 
 app_name = Config.name
 
@@ -12,7 +17,9 @@ post_urlpatterns = [
     path("posts/", PostListView.as_view(), name="post_list"),
 ]
 category_urlpatterns = [
-    path("category/<slug>/", CategoryPostListView.as_view(), name="category_view"),
+    path(
+        "category/<slug>/", CategoryPostListView.as_view(), name="category_view"
+    ),
 ]
 
 urlpatterns = post_urlpatterns + category_urlpatterns

@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Prefetch, Q, QuerySet
+from django.db.models import Q
 from django.db.models.functions import Coalesce
 from django.urls import reverse
 
@@ -14,7 +14,9 @@ class CategoryManager(models.Manager):
             post_counts=Coalesce(
                 models.Count(
                     "posts",
-                    filter=Q(posts__status__in=Post.public_on_category_status()),
+                    filter=Q(
+                        posts__status__in=Post.public_on_category_status()
+                    ),
                 ),
                 0,
             )
@@ -38,7 +40,9 @@ class Category(models.Model):
         return self.posts.public_on_category()
 
     def get_absolute_url(self):
-        return reverse(f"{Config.name}:category_view", kwargs={"slug": self.slug})
+        return reverse(
+            f"{Config.name}:category_view", kwargs={"slug": self.slug}
+        )
 
     def __str__(self) -> str:
         return self.name

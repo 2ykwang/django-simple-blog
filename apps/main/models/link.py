@@ -21,7 +21,9 @@ class Link(models.Model):
         on_delete=models.SET_NULL,
     )
     order = models.SmallIntegerField(verbose_name="순서", default=0)
-    is_open_new_window = models.BooleanField(verbose_name="새 창에서 열기", default=False)
+    is_open_new_window = models.BooleanField(
+        verbose_name="새 창에서 열기", default=False
+    )
 
     def __str__(self):
         return self.name
