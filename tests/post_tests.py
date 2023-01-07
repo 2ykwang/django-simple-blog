@@ -1,7 +1,7 @@
 from django.test import TransactionTestCase
 
 from apps.posts.models import Post
-from apps.posts.models.factory import PostFactory
+from apps.posts.factory import PostFactory
 
 
 class PostModelTestCase(TransactionTestCase):
