@@ -8,7 +8,14 @@ from .models import Category, Post
 class PostAdmin(admin.ModelAdmin):
     search_fields = ("title", "content")
     list_select_related = ("category",)
-    list_display = ("title", "category", "slug", "is_page", "published", "updated")
+    list_display = (
+        "title",
+        "category",
+        "slug",
+        "is_page",
+        "published",
+        "updated",
+    )
 
     fieldsets = (
         (
@@ -27,7 +34,13 @@ class PostAdmin(admin.ModelAdmin):
         (
             "게시 옵션",
             {
-                "fields": ("slug", "status", "category", "is_page", "use_comment"),
+                "fields": (
+                    "slug",
+                    "status",
+                    "category",
+                    "is_page",
+                    "use_comment",
+                ),
             },
         ),
         (

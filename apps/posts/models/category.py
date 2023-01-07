@@ -14,7 +14,9 @@ class CategoryManager(models.Manager):
             post_counts=Coalesce(
                 models.Count(
                     "posts",
-                    filter=Q(posts__status__in=Post.public_on_category_status()),
+                    filter=Q(
+                        posts__status__in=Post.public_on_category_status()
+                    ),
                 ),
                 0,
             )
@@ -38,7 +40,9 @@ class Category(models.Model):
         return self.posts.public_on_category()
 
     def get_absolute_url(self):
-        return reverse(f"{Config.name}:category_view", kwargs={"slug": self.slug})
+        return reverse(
+            f"{Config.name}:category_view", kwargs={"slug": self.slug}
+        )
 
     def __str__(self) -> str:
         return self.name

@@ -31,7 +31,9 @@ class PostDetailView(BasePostDetailView):
 
 class PostListView(ListView):
     def get_queryset(self):
-        queryset = Post.posts.public_on_category().select_related("category").cache()
+        queryset = (
+            Post.posts.public_on_category().select_related("category").cache()
+        )
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -46,7 +48,9 @@ class CategoryPostListView(ListView):
 
     def _get_category(self):
         # TODO: select category 두 번 발생
-        self.category = get_object_or_404(Category, slug=self.kwargs.get("slug"))
+        self.category = get_object_or_404(
+            Category, slug=self.kwargs.get("slug")
+        )
         return self.category
 
     def get_queryset(self):
